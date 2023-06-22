@@ -1,12 +1,17 @@
 package com.antonbondoc.matatagrentalsystem.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.*;
+import org.hibernate.Hibernate;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Objects;
 import java.util.UUID;
 
 
@@ -14,8 +19,6 @@ import java.util.UUID;
 @Getter
 @Setter
 @ToString
-@AllArgsConstructor
-@NoArgsConstructor
 public class Tenant {
 
     @Id
@@ -26,10 +29,7 @@ public class Tenant {
 
     private String lastName;
 
-    @ToString.Exclude
-    @ManyToOne
-    @JoinColumn(name = "id")
-    private Room room;
+    private String room;
 
     private String contactInfo;
 
@@ -40,4 +40,17 @@ public class Tenant {
 
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Tenant tenant = (Tenant) o;
+        return getId() != null && Objects.equals(getId(), tenant.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 }
