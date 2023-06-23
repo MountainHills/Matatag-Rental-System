@@ -1,4 +1,4 @@
-package com.antonbondoc.matatagrentalsystem.dto;
+package com.antonbondoc.matatagrentalsystem.dto.response;
 
 import com.antonbondoc.matatagrentalsystem.model.enums.RoomType;
 import lombok.Data;

@@ -33,8 +33,6 @@ public class Tenant {
 
     private String contactInfo;
 
-    private LocalDate joinedAt;
-
     @CreationTimestamp
     private LocalDateTime createdAt;
 

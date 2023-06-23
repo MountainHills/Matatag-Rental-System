@@ -1,4 +1,4 @@
-package com.antonbondoc.matatagrentalsystem.dto;
+package com.antonbondoc.matatagrentalsystem.dto.response;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
