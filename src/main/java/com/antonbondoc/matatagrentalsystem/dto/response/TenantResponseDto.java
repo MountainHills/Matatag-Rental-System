@@ -1,12 +1,12 @@
 package com.antonbondoc.matatagrentalsystem.dto;
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
-import java.time.LocalDate;
 import java.util.UUID;
 
 @Data
-public class TenantDTO {
+public class TenantResponseDto {
     private UUID id;
 
     private String firstName;
@@ -16,6 +16,4 @@ public class TenantDTO {
     private String room;
 
     private String contactInfo;
-
-    private LocalDate joinedAt;
 }
