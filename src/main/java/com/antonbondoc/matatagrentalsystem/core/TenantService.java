@@ -2,7 +2,6 @@ package com.antonbondoc.matatagrentalsystem.core;
 
 import com.antonbondoc.matatagrentalsystem.dto.request.TenantRequestDto;
 import com.antonbondoc.matatagrentalsystem.dto.response.TenantResponseDto;
-import com.antonbondoc.matatagrentalsystem.model.Tenant;
 
 import java.util.UUID;
 
