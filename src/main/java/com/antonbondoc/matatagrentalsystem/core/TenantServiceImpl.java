@@ -32,4 +32,27 @@ public class TenantServiceImpl implements TenantService {
         Tenant createdTenant = tenantRepository.save(tenant);
         return tenantMapper.tenantToTenantResponseDto(createdTenant);
     }
+
+    @Override
+    public TenantResponseDto updateTenant(UUID id, TenantRequestDto request) {
+        Tenant tenant = tenantRepository.findById(id).orElseThrow(
+                () -> new EntityNotFoundException("Tenant does not exist.")
+        );
+
+        tenant.setFirstName(request.getFirstName());
+        tenant.setLastName(request.getLastName());
+        tenant.setRoom(request.getRoom());
+        tenant.setContactInfo(request.getContactInfo());
+
+        Tenant updated = tenantRepository.save(tenant);
+        return tenantMapper.tenantToTenantResponseDto(updated);
+    }
+
+    @Override
+    public void deleteTenant(UUID id) {
+        Tenant tenant = tenantRepository.findById(id).orElseThrow(
+                () -> new EntityNotFoundException("Tenant does not exist.")
+        );
+        tenantRepository.delete(tenant);
+    }
 }

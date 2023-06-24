@@ -20,6 +20,7 @@ import java.util.UUID;
 @Setter
 @ToString
 public class Tenant {
+    // TODO: Implement assosciation.
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
