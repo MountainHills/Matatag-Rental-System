@@ -1,20 +1,18 @@
 package com.antonbondoc.matatagrentalsystem.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.Hibernate;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.UUID;
 
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Getter
 @Setter
@@ -24,13 +22,21 @@ public class Tenant {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(nullable = false)
     private UUID id;
 
     private String firstName;
 
     private String lastName;
 
-    private String room;
+    @ManyToOne(
+            cascade = CascadeType.ALL
+    )
+    @JoinColumn(
+            name = "room_id",
+            nullable = false
+    )
+    private Room room;
 
     private String contactInfo;
 

@@ -1,10 +1,7 @@
 package com.antonbondoc.matatagrentalsystem.model;
 
 import com.antonbondoc.matatagrentalsystem.model.enums.RoomType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.Hibernate;
 import org.hibernate.annotations.CreationTimestamp;
@@ -12,10 +9,13 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Getter
 @Setter
@@ -30,9 +30,13 @@ public class Room {
 
     private RoomType type;
 
-    private List<String> tenants;
-
-    private String representative;
+    @OneToMany(
+        fetch = FetchType.EAGER,
+        mappedBy = "room",
+        cascade = CascadeType.ALL,
+        orphanRemoval = true
+    )
+    private List<Tenant> tenants = new ArrayList<>();
 
     private LocalDate occupiedAt;
 

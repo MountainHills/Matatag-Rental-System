@@ -41,7 +41,7 @@ public class TenantServiceImpl implements TenantService {
 
         tenant.setFirstName(request.getFirstName());
         tenant.setLastName(request.getLastName());
-        tenant.setRoom(request.getRoom());
+        // tenant.setRoom(request.getRoom());
         tenant.setContactInfo(request.getContactInfo());
 
         Tenant updated = tenantRepository.save(tenant);
