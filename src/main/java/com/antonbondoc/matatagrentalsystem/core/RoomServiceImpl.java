@@ -42,7 +42,12 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public RoomResponseDto updateRoom(UUID id, RoomRequestDto request) {
-        return null;
+        Room room = roomRepository.findById(id).orElseThrow(
+                () -> new EntityNotFoundException("Room does not exist.")
+        );
+        room.setName(request.getName());
+        room.setType(request.getType());
+        return roomMapper.roomToRoomResponseDto(room);
     }
 
     @Override

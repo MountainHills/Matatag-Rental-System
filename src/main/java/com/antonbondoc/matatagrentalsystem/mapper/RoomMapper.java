@@ -14,14 +14,11 @@ public interface RoomMapper {
     RoomMapper INSTANCE = Mappers.getMapper(RoomMapper.class);
 
     List<RoomResponseDto> roomsToRoomResponseDtos(List<Room> rooms);
-    @Mapping(target = "representative", source = "")
+
     RoomResponseDto roomToRoomResponseDto(Room room);
 
     @Mapping(target = "updatedAt", ignore = true)
-    @Mapping(target = "type", ignore = true)
     @Mapping(target = "tenants", ignore = true)
-    @Mapping(target = "occupiedAt", ignore = true)
-    @Mapping(target = "letter", ignore = true)
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "createdAt", ignore = true)
     Room roomRequestDtoToRoom(RoomRequestDto request);

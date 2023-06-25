@@ -10,11 +10,9 @@ import java.util.UUID;
 public class RoomResponseDto {
     private UUID id;
 
-    private String letter;
+    private String name;
 
     private RoomType type;
 
-    private List<String> tenants;
-
-    private String representative;
+    private List<TenantResponseDto> tenants;
 }

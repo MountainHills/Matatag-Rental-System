@@ -26,7 +26,7 @@ public class Room {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    private String letter;
+    private String name;
 
     private RoomType type;
 
@@ -37,8 +37,6 @@ public class Room {
         orphanRemoval = true
     )
     private List<Tenant> tenants = new ArrayList<>();
-
-    private LocalDate occupiedAt;
 
     @CreationTimestamp
     private LocalDateTime createdAt;

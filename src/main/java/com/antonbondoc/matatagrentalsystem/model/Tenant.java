@@ -18,8 +18,6 @@ import java.util.UUID;
 @Setter
 @ToString
 public class Tenant {
-    // TODO: Implement assosciation.
-
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(nullable = false)
@@ -40,11 +38,17 @@ public class Tenant {
 
     private String contactInfo;
 
+    private boolean representative = false;
+
     @CreationTimestamp
     private LocalDateTime createdAt;
 
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
+    public boolean isRepresentative() {
+        return this.representative;
+    }
 
     @Override
     public boolean equals(Object o) {
