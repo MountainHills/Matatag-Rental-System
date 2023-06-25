@@ -1,6 +1,5 @@
 package com.antonbondoc.matatagrentalsystem.dto.response;
 
-import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 import java.util.UUID;

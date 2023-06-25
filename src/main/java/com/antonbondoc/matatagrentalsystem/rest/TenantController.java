@@ -5,7 +5,6 @@ import com.antonbondoc.matatagrentalsystem.dto.request.TenantRequestDto;
 import com.antonbondoc.matatagrentalsystem.dto.response.TenantResponseDto;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,11 +17,6 @@ public class TenantController {
 
     private final TenantService tenantService;
 
-    @GetMapping("/hello")
-    public String greet() {
-        return "Hello World from Tenant";
-    }
-
     @GetMapping(path = "{tenantId}")
     public ResponseEntity<TenantResponseDto> getTenant(@PathVariable("tenantId") UUID tenantId) {
         return ResponseEntity.ok(tenantService.getTenant(tenantId));
@@ -33,10 +27,15 @@ public class TenantController {
         return ResponseEntity.ok(tenantService.createTenant(request));
     }
 
-    @PutMapping
-    public void updateTenant() {}
+    @PutMapping(path = "{tenantId}")
+    public ResponseEntity<TenantResponseDto> updateTenant(@PathVariable("tenantId") UUID tenantId, @Valid @RequestBody TenantRequestDto request) {
+        return ResponseEntity.ok(tenantService.updateTenant(tenantId, request));
+    }
 
-    @DeleteMapping
-    public void deleteTenant() {}
+    @DeleteMapping(path = "{tenantId}")
+    public ResponseEntity<Void> deleteTenant(@PathVariable("tenantId") UUID tenantId) {
+        tenantService.deleteTenant(tenantId);
+        return ResponseEntity.noContent().build();
+    }
 
 }

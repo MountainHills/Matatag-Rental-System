@@ -3,8 +3,6 @@ package com.antonbondoc.matatagrentalsystem.dto.request;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
-import java.util.UUID;
-
 @Data
 public class TenantRequestDto {
     @NotBlank
