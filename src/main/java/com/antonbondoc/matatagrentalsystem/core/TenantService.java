@@ -8,7 +8,7 @@ import java.util.UUID;
 public interface TenantService {
     TenantResponseDto getTenant(UUID id);
 
-    TenantResponseDto createTenant(TenantRequestDto request);
+    TenantResponseDto createTenant(String roomName, TenantRequestDto request);
 
     TenantResponseDto updateTenant(UUID id, TenantRequestDto request);
 

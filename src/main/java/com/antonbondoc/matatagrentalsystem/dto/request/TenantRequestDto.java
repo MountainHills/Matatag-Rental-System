@@ -11,8 +11,5 @@ public class TenantRequestDto {
     @NotBlank
     private String lastName;
 
-    @NotBlank
-    private String name;
-
     private String contactInfo;
 }

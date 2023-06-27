@@ -22,14 +22,14 @@ public class TenantController {
         return ResponseEntity.ok(tenantService.getTenant(tenantId));
     }
 
-    @PostMapping
-    public ResponseEntity<TenantResponseDto> createTenant(@Valid @RequestBody TenantRequestDto request) {
-        return ResponseEntity.ok(tenantService.createTenant(request));
+    @PostMapping(path = "{roomName}")
+    public ResponseEntity<TenantResponseDto> createTenant(@PathVariable("roomName") String roomName, @Valid @RequestBody TenantRequestDto request) {
+        return ResponseEntity.ok(tenantService.createTenant(roomName, request));
     }
 
     @PutMapping(path = "{tenantId}")
     public ResponseEntity<TenantResponseDto> updateTenant(@PathVariable("tenantId") UUID tenantId, @Valid @RequestBody TenantRequestDto request) {
-        return ResponseEntity.ok(tenantService.updateTenant(tenantId, request));
+        return ResponseEntity.ok(tenantService.updateTenantInformation(tenantId, request));
     }
 
     @DeleteMapping(path = "{tenantId}")
