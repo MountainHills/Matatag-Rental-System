@@ -1,5 +1,6 @@
 package com.antonbondoc.matatagrentalsystem.dto.response;
 
+import com.antonbondoc.matatagrentalsystem.model.Room;
 import lombok.Data;
 
 import java.util.UUID;
@@ -12,7 +13,7 @@ public class TenantResponseDto {
 
     private String lastName;
 
-    private String room;
+    private RoomResponseDto room;
 
     private String contactInfo;
 }

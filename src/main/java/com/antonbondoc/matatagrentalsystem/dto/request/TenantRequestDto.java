@@ -12,7 +12,7 @@ public class TenantRequestDto {
     private String lastName;
 
     @NotBlank
-    private String room;
+    private String name;
 
     private String contactInfo;
 }
